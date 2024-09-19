@@ -9,7 +9,7 @@ Lovelace Custom card hiển thị lịch tuần, bao gồm cả ngày âm lịch
 Thêm  dòng code sau vào phần resource trong lovelace
 
 ```yaml
-- url: https://raw.githubusercontent.com/lesydat/weekly-lunar-calendar/master/weekly-lunar-calendar.js
+- url: https://raw.githubusercontent.com/TrianhTuenhi/weekly-lunar-calendar/refs/heads/main/weekly-lunar-calendar.js
   type: module
 ```
 
