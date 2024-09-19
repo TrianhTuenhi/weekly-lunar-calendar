@@ -806,4 +806,4 @@ class WeeklyLunarCalendar extends HTMLElement {
 }
 
 
-customElements.define('weekly-lunar-calendar', WeeklyLunarCalendar);
+customElements.define('AnhNhi-lunar-calendar', AnhNhiLunarCalendar);
