@@ -406,13 +406,13 @@ class LunarCalendar {
   }
 
   getCanHour0(jdn) {
-    return CAN[(jdn-1)*2 % 10];
+    return this.CAN[(jdn-1)*2 % 10];
   }
 
   getCanChi(lunar) {
     var dayName, monthName, yearName;
-    dayName = CAN[(lunar.jd + 9) % 10] + " " + CHI[(lunar.jd+1)%12];
-    monthName = CAN[(lunar.year*12+lunar.month+3) % 10] + " " + CHI[(lunar.month+1)%12];
+    dayName = this.CAN[(lunar.jd + 9) % 10] + " " + this.CHI[(lunar.jd+1)%12];
+    monthName = this.CAN[(lunar.year*12+lunar.month+3) % 10] + " " + this.CHI[(lunar.month+1)%12];
     if (lunar.leap == 1) {
 	    monthName += " (nhuận)";
     }
@@ -422,7 +422,7 @@ class LunarCalendar {
 
   getDayString(lunar, solarDay, solarMonth, solarYear) {
     var s;
-    var dayOfWeek = TUAN[(lunar.jd + 1) % 7];
+    var dayOfWeek = this.TUAN[(lunar.jd + 1) % 7];
     s = dayOfWeek + " " + solarDay + "/" + solarMonth + "/" + solarYear;
     s += " -+- ";
     s = s + "Ngày " + lunar.day+" tháng "+lunar.month;
@@ -434,7 +434,7 @@ class LunarCalendar {
 
   getTodayString() {
     var s = getDayString(currentLunarDate, today.getDate(), today.getMonth()+1, today.getFullYear());
-    s += " n\u0103m " + getYearCanChi(currentLunarDate.year);
+    s += " năm " + getYearCanChi(currentLunarDate.year);
     return s;
   }
 
@@ -450,12 +450,12 @@ class LunarCalendar {
 
   getGioHoangDao(jd) {
     var chiOfDay = (jd+1) % 12;
-    var gioHD = GIO_HD[chiOfDay % 6]; // same values for Ty' (1) and Ngo. (6), for Suu and Mui etc.
+    var gioHD = this.GIO_HD[chiOfDay % 6]; // same values for Ty' (1) and Ngo. (6), for Suu and Mui etc.
     var ret = "";
     var count = 0;
     for (var i = 0; i < 12; i++) {
 	    if (gioHD.charAt(i) == '1') {
-		    ret += CHI[i];
+		    ret += this.CHI[i];
 		    ret += ' ('+(i*2+23)%24+'-'+(i*2+1)%24+')';
 		    if (count++ < 5) ret += ', ';
 		    if (count == 3) ret += '\n';
