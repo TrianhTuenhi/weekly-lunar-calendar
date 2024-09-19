@@ -311,10 +311,10 @@ class LunarCalendar {
     return INT(SunLongitude(dayNumber - 0.5 - timeZone/24.0) / PI * 12);
   }
   
-  this.today = new Date();
-  this.currentLunarDate = getLunarDate(today.getDate(), today.getMonth()+1, today.getFullYear());
-  this.currentMonth = today.getMonth()+1;
-  this.currentYear = today.getFullYear();
+  today = new Date();
+  currentLunarDate = getLunarDate(today.getDate(), today.getMonth()+1, today.getFullYear());
+  currentMonth = today.getMonth()+1;
+  currentYear = today.getFullYear();
 
   parseQuery(q) {
     var ret = new Array();
@@ -397,14 +397,13 @@ class LunarCalendar {
 	    return "";
     }
     var cc = getCanChi(lunarDate);
-    var s = "Ng\u00E0y " + cc[0] +", th\341ng "+cc[1] + ", n\u0103m " + cc[2];
+    var s = "Ngày " + cc[0] +", tháng "+cc[1] + ", năm " + cc[2];
     return s;
   }
 
   getYearCanChi(year) {
     return this.CAN[(year + 6) % 10] + " " + this.CHI[(year + 8) % 12];
   }
-}
 
   getCanHour0(jdn) {
     return CAN[(jdn-1)*2 % 10];
@@ -415,7 +414,7 @@ class LunarCalendar {
     dayName = CAN[(lunar.jd + 9) % 10] + " " + CHI[(lunar.jd+1)%12];
     monthName = CAN[(lunar.year*12+lunar.month+3) % 10] + " " + CHI[(lunar.month+1)%12];
     if (lunar.leap == 1) {
-	    monthName += " (nhu\u1EADn)";
+	    monthName += " (nhuận)";
     }
     yearName = getYearCanChi(lunar.year);
     return new Array(dayName, monthName, yearName);
@@ -426,9 +425,9 @@ class LunarCalendar {
     var dayOfWeek = TUAN[(lunar.jd + 1) % 7];
     s = dayOfWeek + " " + solarDay + "/" + solarMonth + "/" + solarYear;
     s += " -+- ";
-    s = s + "Ng\u00E0y " + lunar.day+" th\341ng "+lunar.month;
+    s = s + "Ngày " + lunar.day+" tháng "+lunar.month;
     if (lunar.leap == 1) {
-	    s = s + " nhu\u1EADn";
+	    s = s + " nhuận";
     }
     return s;
   }
@@ -625,13 +624,13 @@ class LunarCalendar {
     return jdToDate(monthStart+lunarDay-1);
   }
 
-  module.exports = {
+  module = {
     convertLunar2Solar: convertLunar2Solar,
     convertSolar2Lunar: convertSolar2Lunar,
     jdFromDate: jdFromDate,
     jdToDate: jdToDate
   };
-
+}
 /***
  * Weekly Lunar Calerdar card
  */
